@@ -22,9 +22,9 @@ import parkqwikIcon from "@/assets/parkqwik-icon-official.png";
 export const ProfileScreen = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [userInfo, setUserInfo] = useState({
-    name: "Rahul Sharma",
-    email: "rahul.sharma@email.com",
-    phone: "+91 98765 43210",
+    name: "Prabu Dhayalan",
+    email: "prabudhayalan@email.com",
+    phone: "+91 99884 77556",
     vehicleNumber: "HR 26 DQ 1234"
   });
   const [notifications, setNotifications] = useState({
