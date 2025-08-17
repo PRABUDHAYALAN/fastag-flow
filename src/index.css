@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* ParkQwik Brand Colors */
+    --parkqwik-primary: 210 100% 56%; /* #1E90FF */
+    --parkqwik-secondary: 146 100% 39%; /* #00C853 */
+    --parkqwik-accent: 51 100% 50%; /* #FFD700 */
+    --parkqwik-background: 210 33% 97%; /* #F5F7FA */
+
+    --background: var(--parkqwik-background);
+    --foreground: 210 22% 22%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 22% 22%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 22% 22%;
+
+    --primary: var(--parkqwik-primary);
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: var(--parkqwik-secondary);
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: var(--parkqwik-accent);
+    --accent-foreground: 210 22% 22%;
+
+    --muted: 210 33% 95%;
+    --muted-foreground: 210 22% 45%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 95%;
+    --ring: var(--parkqwik-primary);
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--parkqwik-primary)), hsl(210 100% 45%));
+    --gradient-balance: linear-gradient(135deg, hsl(var(--parkqwik-primary)), hsl(var(--parkqwik-secondary)));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 33% 98%));
+    
+    /* Shadows */
+    --shadow-card: 0 4px 20px -2px hsl(var(--parkqwik-primary) / 0.1);
+    --shadow-button: 0 2px 10px hsl(var(--parkqwik-primary) / 0.3);
+    
+    /* Animations */
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --parkqwik-background: 210 22% 8%;
+    --background: var(--parkqwik-background);
+    --foreground: 210 33% 95%;
+
+    --card: 210 22% 12%;
+    --card-foreground: 210 33% 95%;
+
+    --popover: 210 22% 12%;
+    --popover-foreground: 210 33% 95%;
+
+    --primary: var(--parkqwik-primary);
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: var(--parkqwik-secondary);
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: var(--parkqwik-accent);
+    --accent-foreground: 210 22% 8%;
+
+    --muted: 210 22% 15%;
+    --muted-foreground: 210 33% 70%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 22% 20%;
+    --input: 210 22% 15%;
+    --ring: var(--parkqwik-primary);
+
+    /* Dark mode gradients */
+    --gradient-card: linear-gradient(145deg, hsl(210 22% 12%), hsl(210 22% 15%));
+    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-poppins;
+  }
+}
+
+@layer components {
+  .parkqwik-card {
+    @apply bg-card rounded-2xl shadow-[0_4px_20px_-2px_hsl(var(--parkqwik-primary)/0.1)] border border-border/50;
+    background: var(--gradient-card);
+  }
+  
+  .parkqwik-button {
+    @apply bg-primary text-primary-foreground rounded-xl px-6 py-3 font-medium;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-button);
+    transition: all 0.3s var(--transition-bounce);
+  }
+  
+  .parkqwik-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px hsl(var(--parkqwik-primary) / 0.4);
+  }
+  
+  .parkqwik-button:active {
+    transform: scale(0.95);
+  }
+  
+  .balance-card {
+    background: var(--gradient-balance);
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  .shimmer-loading {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s infinite;
+  }
+  
+  .tab-indicator {
+    background: var(--gradient-primary);
+    border-radius: 20px;
+    transition: all 0.3s var(--transition-bounce);
+  }
+}
